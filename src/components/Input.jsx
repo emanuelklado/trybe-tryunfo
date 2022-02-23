@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Input extends Component {
   render() {
@@ -12,7 +13,7 @@ class Input extends Component {
           type={ type }
           maxLength={ maxLength }
           name={ name }
-          //   value={ value }
+          value={ value }
           onChange={ onChange }
           required
         />
@@ -22,3 +23,14 @@ class Input extends Component {
 }
 
 export default Input;
+
+Input.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  textLabel: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  maxLength: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+
+};
