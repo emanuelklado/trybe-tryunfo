@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class TextArea extends Component {
   render() {
-    const { id, name, textLabel, type, maxLength, value, onChange } = this.props;
+    const { id, name, textLabel, type, maxLength, /* value */ onChange } = this.props;
     return (
       <label htmlFor={ id }>
         {textLabel}
@@ -20,5 +20,15 @@ class TextArea extends Component {
     );
   }
 }
+
+TextArea.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  textLabel: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  maxLength: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+//   value: PropTypes.string.isRequired,
+};
 
 export default TextArea;
