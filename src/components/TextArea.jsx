@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class TextArea extends Component {
   render() {
-    const { id, name, textLabel, type, maxLength, /* value */ onChange } = this.props;
+    const { id, name, textLabel, type, maxLength, value, onChange } = this.props;
     return (
       <label htmlFor={ id }>
         {textLabel}
@@ -13,7 +13,7 @@ class TextArea extends Component {
           type={ type }
           maxLength={ maxLength }
           name={ name }
-          //   value={ value }
+          value={ value }
           onChange={ onChange }
           required
         />
@@ -29,7 +29,7 @@ TextArea.propTypes = {
   type: PropTypes.string.isRequired,
   maxLength: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-//   value: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default TextArea;

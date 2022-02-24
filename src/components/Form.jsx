@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Input from './Input';
 import TextArea from './TextArea';
 import Select from './Select';
 import Button from './Button';
 
-class Forms extends Component {
+class Form extends Component {
   render() {
+    const {
+      cardName,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      // hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
+    } = this.props;
     return (
       <form>
         <Input
@@ -14,8 +29,8 @@ class Forms extends Component {
           type="text"
           maxLength="100"
           name="name"
-          value=""
-          onChange=""
+          value={ cardName }
+          onChange={ onInputChange }
         />
         <br />
         <TextArea
@@ -24,8 +39,8 @@ class Forms extends Component {
           type="textarea"
           maxLength="100"
           name="description"
-          value=""
-          onChange=""
+          value={ cardDescription }
+          onChange={ onInputChange }
         />
         <br />
         <Input
@@ -34,8 +49,8 @@ class Forms extends Component {
           type="number"
           maxLength="100"
           name="attr1"
-          value=""
-          onChange=""
+          value={ cardAttr1 }
+          onChange={ onInputChange }
         />
         <br />
         <Input
@@ -44,8 +59,8 @@ class Forms extends Component {
           type="number"
           maxLength="100"
           name="attr2"
-          value=""
-          onChange=""
+          value={ cardAttr2 }
+          onChange={ onInputChange }
         />
         <br />
         <Input
@@ -54,8 +69,8 @@ class Forms extends Component {
           type="number"
           maxLength="100"
           name="attr3"
-          value=""
-          onChange=""
+          value={ cardAttr3 }
+          onChange={ onInputChange }
         />
         <br />
         <Input
@@ -64,11 +79,11 @@ class Forms extends Component {
           type="text"
           maxLength="100"
           name="image"
-          value=""
-          onChange=""
+          value={ cardImage }
+          onChange={ onInputChange }
         />
         <br />
-        <Select />
+        <Select value={ cardRare } onChange={ onInputChange } />
         <br />
         <Input
           id="input-triunfo"
@@ -76,14 +91,30 @@ class Forms extends Component {
           type="checkbox"
           maxLength="100"
           name="trunfo"
-          value=""
-          onChange=""
+          // value={}
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
         />
         <br />
-        <Button />
+        <Button disabled={ isSaveButtonDisabled } onClick={ onSaveButtonClick } />
       </form>
     );
   }
 }
 
-export default Forms;
+Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  // hasTrunfo: PropTypes.string.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+};
+
+export default Form;

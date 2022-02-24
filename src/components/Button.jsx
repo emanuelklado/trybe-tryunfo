@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Button extends Component {
   render() {
-    return <button data-testid="save-button" type="submit">Salvar</button>;
+    const { disabled, onClick } = this.props;
+    return (
+      <button
+        onClick={ onClick }
+        disabled={ disabled }
+        data-testid="save-button"
+        type="submit"
+      >
+        Salvar
+      </button>
+    );
   }
 }
+Button.propTypes = {
+  disabled: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default Button;
