@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export default class Card extends Component {
   render() {
     const {
+    //   dataState,
       cardName,
       cardImage,
       cardRare,
@@ -13,6 +14,7 @@ export default class Card extends Component {
       cardAttr2,
       cardAttr3,
     } = this.props;
+
     return (
       <div>
         <h2 data-testid="name-card">{ cardName }</h2>

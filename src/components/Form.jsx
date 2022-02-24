@@ -28,7 +28,7 @@ class Form extends Component {
           textLabel="Nome: "
           type="text"
           maxLength="100"
-          name="name"
+          name="cardName"
           value={ cardName }
           onChange={ onInputChange }
         />
@@ -38,7 +38,7 @@ class Form extends Component {
           textLabel="Descrição: "
           type="textarea"
           maxLength="100"
-          name="description"
+          name="cardDescription"
           value={ cardDescription }
           onChange={ onInputChange }
         />
@@ -48,7 +48,7 @@ class Form extends Component {
           textLabel="Atrib 1: "
           type="number"
           maxLength="100"
-          name="attr1"
+          name="cardAttr1"
           value={ cardAttr1 }
           onChange={ onInputChange }
         />
@@ -58,7 +58,7 @@ class Form extends Component {
           textLabel="Atrib 2: "
           type="number"
           maxLength="100"
-          name="attr2"
+          name="cardAttr2"
           value={ cardAttr2 }
           onChange={ onInputChange }
         />
@@ -68,7 +68,7 @@ class Form extends Component {
           textLabel="Atrib 3: "
           type="number"
           maxLength="100"
-          name="attr3"
+          name="cardAttr3"
           value={ cardAttr3 }
           onChange={ onInputChange }
         />
@@ -78,19 +78,19 @@ class Form extends Component {
           textLabel="imagem: "
           type="text"
           maxLength="100"
-          name="image"
+          name="cardImage"
           value={ cardImage }
           onChange={ onInputChange }
         />
         <br />
-        <Select value={ cardRare } onChange={ onInputChange } />
+        <Select name="cardRare" value={ cardRare } onChange={ onInputChange } />
         <br />
         <Input
           id="input-triunfo"
           textLabel="Super Trunfo ? "
           type="checkbox"
           maxLength="100"
-          name="trunfo"
+          name="cardTrunfo"
           // value={}
           checked={ cardTrunfo }
           onChange={ onInputChange }

@@ -11,7 +11,7 @@ class Select extends Component {
           onChange={ onChange }
           value={ value }
           data-testid="rare-input"
-          name="rare-input"
+          name="cardRare"
           id="rare-input"
         >
           <option value="normal">normal</option>
@@ -22,6 +22,7 @@ class Select extends Component {
     );
   }
 }
+
 Select.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
