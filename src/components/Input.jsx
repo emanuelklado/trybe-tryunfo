@@ -16,7 +16,7 @@ class Input extends Component {
           value={ value }
           onChange={ onChange }
           checked={ checked }
-          required
+          // required
         />
       </label>
     );
