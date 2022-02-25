@@ -6,6 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: [],
       cardName: '',
       cardImage: '',
       cardRare: 'normal',
@@ -25,6 +26,20 @@ class App extends React.Component {
 
   onSaveButtonClick(event) {
     event.preventDefault();
+    const estado = this.state;
+    this.setState((prevState) => ({ data: [...prevState.data, estado] }));
+
+    this.setState(() => ({
+      cardName: '',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      isSaveButtonDisabled: true,
+    }));
   }
 
   onInputChange({ target: { name, value, checked, type } }) {

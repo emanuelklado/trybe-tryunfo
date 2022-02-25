@@ -32,6 +32,10 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   maxLength: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  checked: PropTypes.bool.isRequired,
+  value: PropTypes.string,
+  checked: PropTypes.bool,
+};
+Input.defaultProps = {
+  checked: false,
+  value: '',
 };
