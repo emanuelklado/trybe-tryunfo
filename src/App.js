@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import CardRender from './components/CardRender';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class App extends React.Component {
 
     this.checkHasTrunfo();
 
-    this.setState(() => ({
+    this.setState({
       cardName: '',
       cardImage: '',
       cardRare: 'normal',
@@ -46,7 +47,7 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       isSaveButtonDisabled: true,
-    }));
+    });
   }
 
   onInputChange({ target: { name, value, checked, type } }) {
@@ -90,6 +91,7 @@ class App extends React.Component {
 
   render() {
     const {
+      data,
       cardName,
       cardDescription,
       cardAttr1,
@@ -130,6 +132,11 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
         />
+        { data.map((item, index) => (
+          <div key={ index }>
+            <CardRender { ...item } />
+          </div>
+        ))}
       </div>
     );
   }
