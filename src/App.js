@@ -11,12 +11,15 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       cardDescription: '',
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
       isSaveButtonDisabled: true,
     };
+
+    this.checkHasTrunfo = this.checkHasTrunfo.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.validateAtrib = this.validateAtrib.bind(this);
@@ -26,8 +29,12 @@ class App extends React.Component {
 
   onSaveButtonClick(event) {
     event.preventDefault();
-    const estado = this.state;
-    this.setState((prevState) => ({ data: [...prevState.data, estado] }));
+    // const estado = this.state;
+    // Referência: Emerson Alves me indicou esta solução, pois não estava passando nos testes.
+    this.setState(({ data, hasTrunfo, isSaveButtonDisabled, ...rest }) => ({
+      data: [...data, { ...rest }] }));
+
+    this.checkHasTrunfo();
 
     this.setState(() => ({
       cardName: '',
@@ -75,6 +82,12 @@ class App extends React.Component {
     }
   }
 
+  checkHasTrunfo() {
+    this.setState(({ data }) => ({
+      hasTrunfo: data.some((elem) => elem.cardTrunfo),
+    }));
+  }
+
   render() {
     const {
       cardName,
@@ -86,6 +99,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
     return (
       <div>
@@ -101,6 +115,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card

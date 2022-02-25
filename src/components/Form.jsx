@@ -16,11 +16,12 @@ class Form extends Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
+
     return (
       <form>
         <Input
@@ -85,16 +86,21 @@ class Form extends Component {
         <br />
         <Select name="cardRare" value={ cardRare } onChange={ onInputChange } />
         <br />
-        <Input
-          id="input-triunfo"
-          textLabel="Super Trunfo ? "
-          type="checkbox"
-          maxLength="100"
-          name="cardTrunfo"
-          // value={}
-          checked={ cardTrunfo }
-          onChange={ onInputChange }
-        />
+        <div>
+          {hasTrunfo ? (
+            <p> Você já tem um Super Trunfo em seu baralho</p>
+          ) : (
+            <Input
+              id="input-triunfo"
+              textLabel="Super Trunfo ? "
+              type="checkbox"
+              maxLength="100"
+              name="cardTrunfo"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+          )}
+        </div>
         <br />
         <Button disabled={ isSaveButtonDisabled } onClick={ onSaveButtonClick } />
       </form>
@@ -111,7 +117,7 @@ Form.propTypes = {
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
-  // hasTrunfo: PropTypes.string.isRequired,
+  hasTrunfo: PropTypes.string.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
