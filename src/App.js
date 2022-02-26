@@ -20,6 +20,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
     };
 
+    this.removeCard = this.removeCard.bind(this);
     this.checkHasTrunfo = this.checkHasTrunfo.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
@@ -89,6 +90,11 @@ class App extends React.Component {
     }));
   }
 
+  removeCard(cardName) {
+    const { data } = this.state;
+    this.setState(({ data: data.filter((el) => el.cardName !== cardName) }));
+  }
+
   render() {
     const {
       data,
@@ -134,7 +140,7 @@ class App extends React.Component {
         />
         { data.map((item, index) => (
           <div key={ index }>
-            <CardRender { ...item } />
+            <CardRender propOnClick={ this.removeCard } { ...item } />
           </div>
         ))}
       </div>
