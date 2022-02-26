@@ -93,6 +93,7 @@ class App extends React.Component {
   removeCard(cardName) {
     const { data } = this.state;
     this.setState(({ data: data.filter((el) => el.cardName !== cardName) }));
+    this.checkHasTrunfo();
   }
 
   render() {
