@@ -62,7 +62,7 @@ class App extends React.Component {
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
     const maxSum = 210;
     const max = 90;
-    const sum = (+cardAttr1 + +cardAttr2 + +cardAttr3) <= maxSum;
+    const sum = (+cardAttr1 + +cardAttr2 + +cardAttr3) <= maxSum; // transformando em number
     const positive = cardAttr1 >= 0 && cardAttr2 >= 0 && cardAttr3 >= 0;
     const length = cardAttr1 <= max && cardAttr2 <= max && cardAttr3 <= max;
     console.log(sum && positive && length);
@@ -111,40 +111,49 @@ class App extends React.Component {
       hasTrunfo,
     } = this.state;
     return (
-      <div>
-        <h1> Adicionar nova carta </h1>
-        <Form
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-        />
-        <Card
-          onInputChange={ this.onInputChange }
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-        />
-        { data.map((item, index) => (
-          <div key={ index }>
-            <CardRender propOnClick={ this.removeCard } { ...item } />
-          </div>
-        ))}
-      </div>
+      <>
+        <h1 className="zombieTitle"> Zombie Trunfo </h1>
+        <div className="main">
+          <section className="form_h1">
+            <h1> Adicionar nova carta </h1>
+            <Form
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+            />
+          </section>
+          <section>
+            <Card
+              onInputChange={ this.onInputChange }
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+            />
+          </section>
+        </div>
+        <div className="cardsRendered">
+          { data.map((item, index) => (
+            <div key={ index }>
+              <CardRender propOnClick={ this.removeCard } { ...item } />
+            </div>
+          ))}
+        </div>
+      </>
     );
   }
 }
